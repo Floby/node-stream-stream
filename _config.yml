@@ -15,6 +15,10 @@ submenu:
       name: Home
       link: '/'
 
+    - slug: download
+      name: Download
+      link: '/download'
+
     - slug: readme
       name: Read me
       link: '/readme'

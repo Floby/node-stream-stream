@@ -6,13 +6,13 @@ title: Download
 
 #### Github repository
 
-The code for [node-libspotify]({{ site.url }}) is available on Github at [http://github.com/Floby/node-libspotify](http://github.com/Floby/node-libspotify).
+The code for [node-stream-stream]({{ site.url }}) is available on Github at [http://github.com/Floby/node-stream-stream](http://github.com/Floby/node-stream-stream).
 
 #### Use it as a package
 
-[node-libspotify]({{ site.url }}) is also published as a [NPM](http://npmjs.org/package/libspotify) Package. Just type in:
+[node-stream-stream]({{ site.url }}) is also published as a [NPM](http://npmjs.org/package/stream-stream) Package. Just type in:
 
-    npm install libspotify
+    npm install stream-stream
 
 Or add it as a dependency of your Node.js project:
 
@@ -21,7 +21,7 @@ Or add it as a dependency of your Node.js project:
 {
     ...
     "dependencies": {
-        "libspotify":"~0.1"
+        "stream-stream":"~1.0"
     }
 }
 ```
