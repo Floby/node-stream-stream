@@ -4,100 +4,54 @@ layout: project
 title: Read me
 last-updated: 2013-01-30
 ---
+[![Build Status](https://travis-ci.org/Floby/node-stream-stream.png)](https://travis-ci.org/Floby/node-stream-stream)
 
-Node bindings for the libspotify C library
-[![Build Status](https://travis-ci.org/Floby/node-libspotify.png)](https://travis-ci.org/Floby/node-libspotify)
+node-stream-stream
+==================
 
-_This is still very alpha, but you can already play around I suppose_
+> A stream of streams in order to concatenate the contents of several streams
 
-#### Install & test
+Installation
+------------
 
-Please note that you must have the libspotify library installed on your system
-you can get it from [here](https://developer.spotify.com/technologies/libspotify/).
+    npm install --save stream-stream
 
-You must provide your own spotify application key, because I'm not giving mine away :]
-You also must provide valid credentials for a spotify account.
+Usage
+-----
 
-Once you cloned the repository
-run `npm install` then test the module with `npm test`
-
-#### Main objectives
-
-As there are already a number of spotify bindings or modules for the REST API, the main goal
-of this module is not to give access to the artist and tracks catalog. It's main purpose is
-to allow for playback of the tracks. The idea is to expose a `Player` object in which the user
-can load tracks, play them, and get decompressed audio data from it (as provided by the libspotify C library).
-
-What the user can do with the audio stream is up to him/her. As it is raw PCM data, it is easy to pipe to
-some kind of encoder (like gstreamer) in order to broadcast music or stream it to a web user (as long as it complies
-with the Spotify terms of service ;).
-
-The user can also choose to play the song locally with a node module like [speaker](http://github.com/TooTallNate/node-speaker)
-or pipe the audio data to another process like [aplay](http://linux.die.net/man/1/aplay)
-
-
-The main goal is now achieved. Audio data is exposed as the Player object which behaves like a readable stream
-
-#### Snippet
-
-Here is a code snippet of how to play a track from spotify
+A StreamStream is a special kind of transform stream to which you write readable streams.
+The contents of the readable streams will be concatenated in the order you wrote them.
 
 ```javascript
-
-var sp = require('../lib/libspotify');
-var cred = require('../spotify_key/passwd');
+var ss = require('stream-stream');
 var fs = require('fs');
-var spawn = require('child_process').spawn;
 
-var f = fs.createWriteStream('/tmp/bidule.raw');
+var files = ['a.txt', 'b.txt', 'c.txt'];
+var stream = ss();
 
-var session = new sp.Session({
-    applicationKey: __dirname + '/../spotify_key/spotify_appkey.key'
+files.forEach(function(f) {
+    stream.write(fs.createReadStream(f));
 });
-session.login(cred.login, cred.password);
-session.once('login', function(err) {
-    if(err) this.emit('error', err);
+stream.end();
 
-    var search = new sp.Search('artist:"rick astley" track:"never gonna give you up"');
-    search.trackCount = 1; // we're only interested in the first result;
-    search.execute();
-    search.once('ready', function() {
-        if(!search.tracks.length) {
-            console.error('there is no track to play :[');
-            session.logout();
-        }
-
-        var track = search.tracks[0];
-        var player = session.getPlayer();
-        player.load(track);
-        player.play();
-
-        // linux
-        var play = spawn('aplay', ['-c', 2, '-f', 'S16_LE', '-r', '44100']);
-        // osx with `brew install sox`
-        var play = spawn('play', ['-r', 44100, '-b', 16, '-L', '-c', 2, '-e', 'signed-integer', '-t', 'raw', '-']);
-
-        player.pipe(play.stdin);
-
-        console.error('playing track. end in %s', track.humanDuration);
-        player.on('data', function(buffer) {
-            // buffer.length
-            // buffer.rate
-            // buffer.channels
-            // 16bit samples
-        });
-        player.once('track-end', function() {
-            console.error('track ended');
-            f.end();
-            player.stop();
-            session.close();
-        });
-    });
-});
-
+steam.pipe(process.stdout);
 ```
 
+Test
+----
 
-#### TODO
+You can run the tests with `npm test`. You will need [nodeunit](https://github.com/caolan/nodeunit)
 
-* Bind to the rest of the API...
+
+License
+-------
+
+[MIT](http://opensource.org/licenses/MIT)
+
+Copyright (c) 2012 Florent Jaby
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
