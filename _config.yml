@@ -1,4 +1,4 @@
-url: "http://projects.flo.by/node-libspotify"
+url: "http://projects.flo.by/node-stream-stream"
 pygments: true
 exclude: [/bin, Gemfile, Gemfile.lock]
 markdown: redcarpet
@@ -6,22 +6,14 @@ markdown: redcarpet
 #markdown: rdiscount
 permalink: pretty
 paginate: 5
-project: node-libspotify
-project_image: /images/node-libspotify-icon.png
+project: node-stream-stream
+project_image: /images/node-stream-stream-icon.png
 menu_item: projects
-title: node-libspotify
+title: node-stream-stream
 submenu:
     - slug: home
       name: Home
       link: '/'
-
-    - slug: download
-      name: Download
-      link: '/download'
-
-    - slug: tuto
-      name: Quick Start
-      link: '/quick-start'
 
     - slug: readme
       name: Read me

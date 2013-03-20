@@ -1,35 +1,22 @@
 ---
-last-updated: 2013-01-27
+last-updated: 2013-03-20
 submenu_item: home
 layout: project
 ---
 
 <p class="lead">
-<strong>Node-libspotify</strong> is a <a href="http://nodejs.org">Node.js</a> module which allows the use from Javascript of the low-level Spotify API.
+    <strong>node-stream-stream: </strong> A stream of streams in order to concatenate the contents of several streams
 </p>
-    
 
+#### But why?
 
-#### But why ?
+It may have all started from a question on StackOverflow where someone was trying to read
+sequential log files in a unified fashion. I first created [node-catstream](http://project.flo.by/node-catstream)
+but then realized I could make something more general
 
-Spotify is my favourite place to listen to my music. Most the time I'm only streaming it from the web.
-When I'm on my phone it's pretty much all sync'd to my Android app.
-I'm [FlobyIV](http://open.spotify.com/user/flobyiv) on Spotify and [FlobyIV](http://last.fm/user/FlobyIV) as well on Last.fm
-
-
-Because I love Spotify and Node.js so much, I couldn't help but give a try at using the first one with the second one.
-Spotify released [libspotify](http://developer.spotify.com/technologies/libspotify/) some time ago, which is a low-level
-library (written in C) to use their service. It's not badly documented but it's probably the first time I had to bind to
-something without the ability to read the actual code, because libspotify is still proprietary software.
-
-
-#### Try it out
-I suggest you start by reading the [Quick Start]({{ site.url }}/quick-start). Note that you will need to install libspotify
-globally on your system so that node-libspotify can link to it during compilation.
-
+I advise you read the [Readme]({{ site.url }}/readme) file. It really is not that complicated.
 
 #### Current state
-[![Build Status](https://travis-ci.org/Floby/node-libspotify.png)](https://travis-ci.org/Floby/node-libspotify)
+[![Build Status](https://travis-ci.org/Floby/node-stream-stream.png)](https://travis-ci.org/Floby/node-stream-stream)
 
-I wouldn't call node-libspotify a "finished" project. There are still some parts of the API that are not accessible from
-the Node side. But I'm still actively working on it, so it should be there soon enough.
+**node-stream-stream** is part of my first experimentations with the new Stream2 API in Node.js 0.10
