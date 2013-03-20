@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Floby/node-stream-stream.png)](https://travis-ci.org/Floby/node-stream-stream)
+
 node-stream-stream
 ==================
 
