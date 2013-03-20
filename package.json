@@ -17,6 +17,9 @@
     "concatenation",
     "utility"
   ],
+  "devDevependencies": {
+    "nodeunit":"0.7.x"
+  },
   "author": "Florent Jaby <florent.jaby@gmail.com>",
   "license": "MIT",
   "readmeFilename": "README.md",
