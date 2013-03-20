@@ -26,6 +26,7 @@ var stream = ss();
 files.forEach(function(f) {
     stream.write(fs.createReadStream(f));
 });
+stream.end();
 
 steam.pipe(process.stdout);
 ```
