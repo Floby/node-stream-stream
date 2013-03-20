@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "A stream of streams in order to concatenates the contents of several streams",
   "main": "index.js",
+  "engines": {
+    "node": ">=0.10"
+  },
   "scripts": {
     "test": "nodeunit test/test-*.js"
   },
