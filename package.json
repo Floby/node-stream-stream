@@ -1,6 +1,6 @@
 {
   "name": "stream-stream",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A stream of streams in order to concatenates the contents of several streams",
   "main": "index.js",
   "engines": {
@@ -21,7 +21,7 @@
     "utility"
   ],
   "devDependencies": {
-    "nodeunit":"0.7.x"
+    "nodeunit": "0.7.x"
   },
   "author": "Florent Jaby <florent.jaby@gmail.com>",
   "license": "MIT",
