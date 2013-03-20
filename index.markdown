@@ -16,6 +16,10 @@ but then realized I could make something more general
 
 I advise you read the [Readme]({{ site.url }}/readme) file. It really is not that complicated.
 
+If you need to use this module in your projects, it is available on **NPM**
+
+    npm install --save stream-stream
+
 #### Current state
 [![Build Status](https://travis-ci.org/Floby/node-stream-stream.png)](https://travis-ci.org/Floby/node-stream-stream)
 
