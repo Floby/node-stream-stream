@@ -20,7 +20,7 @@
     "concatenation",
     "utility"
   ],
-  "devDevependencies": {
+  "devDependencies": {
     "nodeunit":"0.7.x"
   },
   "author": "Florent Jaby <florent.jaby@gmail.com>",
