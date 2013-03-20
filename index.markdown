@@ -11,7 +11,7 @@ layout: project
 #### But why?
 
 It may have all started from a question on StackOverflow where someone was trying to read
-sequential log files in a unified fashion. I first created [node-catstream](http://project.flo.by/node-catstream)
+sequential log files in a unified fashion. I first created [node-catstream](http://projects.flo.by/node-catstream)
 but then realized I could make something more general
 
 I advise you read the [Readme]({{ site.url }}/readme) file. It really is not that complicated.
