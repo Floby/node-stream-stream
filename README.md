@@ -31,7 +31,7 @@ stream.end();
 steam.pipe(process.stdout);
 ```
 
-You can also add a separator between the contents of each stream by sepcifying a `separator`
+You can also add a separator between the contents of each stream by specifying a `separator`
 field in the options.
 
 ```javascript
