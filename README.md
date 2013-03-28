@@ -31,6 +31,24 @@ stream.end();
 steam.pipe(process.stdout);
 ```
 
+You can also add a separator between the contents of each stream by sepcifying a `separator`
+field in the options.
+
+```javascript
+var mystream = new ss({
+    separator: '\n',
+    separator: function(cb) {
+        cb('\n');
+    },
+    separator: function(cb) {
+        cb(someReadableStream)
+    }
+});
+```
+
+It is also possible to `pipe()` to this stream from a readable stream in objectMode.
+
+
 Test
 ----
 
