@@ -1,4 +1,4 @@
 ---
 language: node_js
 node_js:
-- v0.10
+- '0.10'
