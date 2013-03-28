@@ -41,7 +41,7 @@ Contributing
 
 Anyone is welcome to submit issues and pull requests
 
-thanks to @vanthome
+thanks to [vanthome](https://github.com/vanthome)
 
 
 License
