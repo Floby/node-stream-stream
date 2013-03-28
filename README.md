@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Floby/node-stream-stream.png)](https://travis-ci.org/Floby/node-stream-stream)
+[![Build Status](https://travis-ci.org/Floby/node-stream-stream.png?branch=master)](https://travis-ci.org/Floby/node-stream-stream)
 
 node-stream-stream
 ==================
@@ -35,6 +35,13 @@ Test
 ----
 
 You can run the tests with `npm test`. You will need [nodeunit](https://github.com/caolan/nodeunit)
+
+Contributing
+------------
+
+Anyone is welcome to submit issues and pull requests
+
+thanks to @vanthome
 
 
 License
