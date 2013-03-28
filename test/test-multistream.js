@@ -10,6 +10,7 @@ exports.testMultiSync = function(test) {
     var done = false;
     ss.pipe(sink()).on('data', function(data) {
         done = true;
+        clearTimeout(to);
         test.equal('hello world!', data, "Data in sink should be identical");
         test.done();
     });
@@ -21,7 +22,7 @@ exports.testMultiSync = function(test) {
     ss.end(c);
     c.end('!');
     
-    setTimeout(function(){
+    var to = setTimeout(function(){
         if(!done) {
             test.fail('no end detected');
             test.done();

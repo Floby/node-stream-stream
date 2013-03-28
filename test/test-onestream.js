@@ -8,6 +8,7 @@ exports.testOneStream = function(test) {
     var done = false;
     ss.pipe(sink()).on('data', function(data) {
         done = true;
+        clearTimeout(to);
         test.equal('hello', data, "Data in sink should be identical");
         test.done();
     });
@@ -15,7 +16,7 @@ exports.testOneStream = function(test) {
     ss.end(data);
     data.end('hello');
     
-    setTimeout(function(){
+    var to = setTimeout(function(){
         if(!done) {
             test.fail('no end detected');
             test.done();
