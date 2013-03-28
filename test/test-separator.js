@@ -94,3 +94,31 @@ exports.testSeparatorIsFunction = function(test) {
     });
 }
 
+exports.testSeparatorReturnsStream = function(test) {
+    var emitter = new EmitStream(['one', 'two', 'three']);
+    var ss = SS({separator: function(cb) {
+        var mystream = new stream.PassThrough();
+        process.nextTick(function() {
+            cb(mystream);
+        });
+        process.nextTick(function() {
+            mystream.end(':')
+        })
+    }});
+    var s = sink();
+    var done = false;
+    var to = setTimeout(function() {
+        if(!done) {
+            test.fail('No end detected')
+            test.done();
+        }
+    }, 500);
+
+    emitter.pipe(ss).pipe(s).on('data', function(data) {
+        test.equal(data, "one:two:three", "Data in sink should be identical");
+        done = true;
+        test.done();
+        clearTimeout(to);
+    });
+}
+
