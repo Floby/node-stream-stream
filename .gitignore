@@ -1,6 +1,8 @@
 .*.sw[a-z]
 .*.un~
 
+node_modules
+
 lib-cov
 *.seed
 *.log
