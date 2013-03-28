@@ -37,6 +37,9 @@ field in the options.
 ```javascript
 var mystream = new ss({
     separator: '\n',
+
+    // if separator is a function, it will get called
+    // everytime the stream needs to insert a separator
     separator: function(cb) {
         cb('\n');
     },
