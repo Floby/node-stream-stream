@@ -8,10 +8,11 @@ exports.testEmpty = function(test) {
     ss.pipe(Sink()).on('data', function(data) {
         test.equal(data, '', "There should be no data");
         finished = true;
+        clearTimeout(to);
         test.done();
     });
 
-    setTimeout(function() {
+    var to = setTimeout(function() {
         if(!finished) {
             test.fail('No end detected');
             test.done();
