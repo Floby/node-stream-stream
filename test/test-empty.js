@@ -1,11 +1,11 @@
 var SS = require('../');
-var Sink = require('./sink');
+var sink = require('stream-sink');
 
 
 exports.testEmpty = function(test) {
     var ss = SS();
     var finished = false;
-    ss.pipe(Sink()).on('data', function(data) {
+    ss.pipe(sink()).on('data', function(data) {
         test.equal(data, '', "There should be no data");
         finished = true;
         clearTimeout(to);

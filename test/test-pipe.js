@@ -1,7 +1,7 @@
 var util = require('util');
 var stream = require('stream');
 var SS = require('../');
-var sink = require('./sink');
+var sink = require('stream-sink');
 
 function EmitStream (array) {
     stream.Readable.call(this, {objectMode:true});

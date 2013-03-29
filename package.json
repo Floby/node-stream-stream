@@ -21,7 +21,8 @@
     "utility"
   ],
   "devDependencies": {
-    "nodeunit": "0.7.x"
+    "nodeunit": "0.7.x",
+    "stream-sink": "1.x.x"
   },
   "author": "Florent Jaby <florent.jaby@gmail.com>",
   "license": "MIT",

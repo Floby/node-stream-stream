@@ -1,6 +1,6 @@
 var stream = require('stream');
 var SS = require('../');
-var sink = require('./sink');
+var sink = require('stream-sink');
 
 exports.testOneStream = function(test) {
     var data = new stream.PassThrough();

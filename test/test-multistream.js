@@ -1,6 +1,6 @@
 var stream = require('stream');
 var SS = require('../');
-var sink = require('./sink');
+var sink = require('stream-sink');
 
 exports.testMultiSync = function(test) {
     var a = new stream.PassThrough();
