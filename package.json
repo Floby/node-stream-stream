@@ -1,6 +1,6 @@
 {
   "name": "stream-stream",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A stream of streams in order to concatenates the contents of several streams",
   "main": "index.js",
   "engines": {
