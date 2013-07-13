@@ -28,7 +28,7 @@ files.forEach(function(f) {
 });
 stream.end();
 
-steam.pipe(process.stdout);
+stream.pipe(process.stdout);
 ```
 
 You can also add a separator between the contents of each stream by specifying a `separator`
