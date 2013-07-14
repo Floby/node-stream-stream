@@ -13,7 +13,6 @@ exports.testObjectMode = function(test) {
         done = true;
         clearTimeout(to);
         test.doesNotThrow(function() {
-            console.log('data', data)
             test.ok(Array.isArray(data), "Data should be an array");
             test.equal(data.length, 3, "Data should have same length");
             test.equal(data.join(''), 'abc', 'Data should be abc')
