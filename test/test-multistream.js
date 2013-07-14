@@ -1,6 +1,23 @@
 var stream = require('stream');
 var SS = require('../');
 var sink = require('stream-sink');
+var domain = require('domain');
+
+Function.prototype.withDomain = function(withStack) {
+  var fn = this;
+  return function(test) {
+    var d = domain.create();
+    d.on('error', function(e) {
+      test.fail('test failed with ' + e.message);
+      if(withStack) {
+        console.error(e.stack)
+      }
+      test.done();
+    });
+    d.run(fn.bind(this, test));
+  }
+}
+
 
 exports.testMultiSync = function(test) {
     var a = new stream.PassThrough();
@@ -15,12 +32,14 @@ exports.testMultiSync = function(test) {
         test.done();
     });
 
-    ss.write(a);
-    a.end('hello');
-    b.end(' world');
-    ss.write(b);
-    ss.end(c);
-    c.end('!');
+    process.nextTick(function () {
+        ss.write(a);
+        a.end('hello');
+        b.end(' world');
+        ss.write(b);
+        ss.end(c);
+        c.end('!');
+    })
     
     var to = setTimeout(function(){
         if(!done) {
@@ -28,7 +47,7 @@ exports.testMultiSync = function(test) {
             test.done();
         }
     }, 20)
-}
+}.withDomain(true)
 
 
 exports.testMultiAsync = function(test) {
