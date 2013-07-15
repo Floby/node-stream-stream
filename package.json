@@ -7,7 +7,7 @@
     "node": ">=0.10"
   },
   "scripts": {
-    "test": "nodeunit test/test-*.js"
+    "test": "istanbul cover nodeunit test/test-*.js && istanbul check --branches 90 --statements 95 --lines 100 --functions 100"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,8 @@
   ],
   "devDependencies": {
     "nodeunit": "0.7.x",
-    "stream-sink": "~1.1"
+    "stream-sink": "~1.1",
+    "istanbul": "~0.1.42"
   },
   "author": "Florent Jaby <florent.jaby@gmail.com>",
   "license": "MIT",

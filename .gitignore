@@ -1,5 +1,7 @@
 .*.sw[a-z]
 .*.un~
+.tern-port
+coverage
 
 node_modules
 
