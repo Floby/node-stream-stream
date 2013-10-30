@@ -83,3 +83,38 @@ exports.testobjectModeAsync = function(test) {
     }, 1000)
 }
 
+exports.testObjectModeOverrun = function (test) {
+    var options = {objectMode: true};
+    var a = new stream.PassThrough(options);
+    var b = new stream.PassThrough(options);
+    var c = new stream.PassThrough(options);
+    var ss = SS(options)
+    var done = false;
+    ss.pipe(sink(options)).on('data', function(data) {
+        done = true;
+        clearTimeout(to);
+        test.doesNotThrow(function() {
+            test.ok(Array.isArray(data), "Data should be an array");
+            test.equal(data.length, 6, "Data should have same length");
+            test.equal(data.join(''), 'aabbcc', 'Data should be aabbcc')
+        })
+        test.done();
+    });
+
+    a.write('a');
+    ss.write(a);
+    a.end('a');
+    b.write('b');
+    b.end('b');
+    ss.write(b);
+    ss.end(c);
+    c.write('c');
+    c.end('c');
+    
+    var to = setTimeout(function(){
+        if(!done) {
+            test.fail('no end detected');
+            test.done();
+        }
+    }, 20)
+}
